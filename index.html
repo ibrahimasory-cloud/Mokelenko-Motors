@@ -1,0 +1,2375 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mokelenko Motors – Vente, Location & Pièces Auto</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --green: #0b5c4e;
+        --green-dark: #083d34;
+        --green-light: #1a7a6a;
+        --green-pale: #e4f2ef;
+        --gold: #c9a84c;
+        --white: #ffffff;
+        --gray: #f5f5f3;
+        --text: #1a1a1a;
+        --text-muted: #666;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--text);
+        background: var(--white);
+        overflow-x: hidden;
+      }
+      button {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      /* ===== NAV ===== */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: rgba(11, 92, 78, 0.97);
+        backdrop-filter: blur(8px);
+        padding: 0 5%;
+      }
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 68px;
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .logo-img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        display: block;
+      }
+      .nav-brand {
+        display: flex;
+        flex-direction: column;
+        line-height: 1;
+      }
+      .nav-name {
+        font-family: "Montserrat", sans-serif;
+        font-size: 18px;
+        color: white;
+        letter-spacing: 2px;
+        font-weight: 700;
+      }
+      .nav-sub {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.8);
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+      .nav-links {
+        display: flex;
+        gap: 32px;
+        list-style: none;
+      }
+      .nav-links a {
+        color: rgba(255, 255, 255, 1);
+        font-size: 13px;
+        
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--gold);
+      }
+      .nav-cta {
+        background: var(--gold);
+        color: var(--green-dark);
+        padding: 9px 20px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        border: none;
+        transition: all 0.2s;
+      }
+      .nav-cta:hover {
+        background: white;
+        color: var(--green);
+      }
+      /* Burger mobile */
+      .burger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 4px;
+        background: none;
+        border: none;
+      }
+      .burger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: white;
+        border-radius: 2px;
+        transition: all 0.3s;
+      }
+      .burger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .burger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .burger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+      .mobile-menu {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.35s ease;
+        background: rgba(8, 61, 52, 0.99);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+      }
+      .mobile-menu.open {
+        max-height: 450px;
+        margin-bottom: 20px;
+      }
+      .mobile-menu a {
+        display: block;
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        padding: 14px 5%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        transition: color 0.2s;
+      }
+      .mobile-menu a:hover {
+        color: var(--gold);
+      }
+
+      /* ===== HERO ===== */
+      .hero {
+        min-height: 100vh;
+        background: linear-gradient(
+          135deg,
+          var(--green-dark) 0%,
+          var(--green) 60%,
+          var(--green-light) 100%
+        );
+        display: flex;
+        align-items: center;
+        padding: 0 5%;
+        position: relative;
+        overflow: hidden;
+      }
+      .background {
+        background-image: url(Media/Porsche\ Taycan\ 4S\ Cross\ Turismo\ 2022.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: absolute;
+        inset: 0;
+        opacity: 0.15;
+        z-index: -1;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        right: -100px;
+        top: -100px;
+        width: 700px;
+        height: 700px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 50%;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        right: 50px;
+        bottom: -50px;
+        width: 400px;
+        height: 400px;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        border-radius: 50%;
+      }
+      .hero-content {
+        flex: 1;
+        z-index: 2;
+        max-width: 560px;
+        
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 6px 16px;
+        margin-bottom: 28px;
+      }
+      .badge-dot {
+        width: 7px;
+        height: 7px;
+        background: var(--gold);
+        border-radius: 50%;
+      }
+      .hero-badge span {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.85);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+      .hero h1 {
+        font-family: "Montserrat", sans-serif;
+        font-size: clamp(45px, 3vw, 85px);
+        color: white;
+        line-height: 0.9;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+      }
+      .hero h1 span {
+        color: var(--gold);
+      }
+      .hero-desc {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.7;
+        margin-bottom: 36px;
+        font-weight: 300;
+        max-width: 440px;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        background: var(--gold);
+        color: var(--green-dark);
+        padding: 14px 32px;
+        border-radius: 4px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        cursor: pointer;
+        border: none;
+        transition: all 0.25s;
+      }
+      .btn-primary:hover {
+        background: white;
+        transform: translateY(-2px);
+      }
+      .btn-outline {
+        background: transparent;
+        color: white;
+        padding: 14px 32px;
+        border-radius: 4px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        border: 1.5px solid rgba(255, 255, 255, 0.4);
+        transition: all 0.25s;
+      }
+      .btn-outline:hover {
+        border-color: white;
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .hero-image {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        z-index: 2;
+        padding-left: 40px;
+      }
+      .hero-car-wrap {
+        position: relative;
+        width: 100%;
+        max-width: 550px;
+      }
+      .hero-car-shape {
+        width: 100%;
+        aspect-ratio: 4/3;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 60% 60% 40% 40%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .car-placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+      }
+      .car-img-label {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      .hero-stats {
+        display: flex;
+        gap: 32px;
+        margin-top: 40px;
+      }
+      .stat {
+        border-left: 2px solid var(--gold);
+        padding-left: 14px;
+      }
+      .stat-num {
+        font-family: "Montserrat", sans-serif;
+        font-size: 32px;
+        color: white;
+        line-height: 1;
+      }
+      .stat-label {
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.5);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      /* ===== SECTIONS GENERALES ===== */
+      section {
+        scroll-margin-top: 68px;
+      }
+      .section {
+        padding: 80px 5%;
+      }
+      .section-label {
+        font-size: 11px;
+        color: var(--gold);
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+      .section-title {
+        font-family: "Montserrat", sans-serif;
+        font-size: clamp(36px, 5vw, 52px);
+        color: var(--green-dark);
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+      }
+      .section-sub {
+        color: var(--text-muted);
+        font-size: 15px;
+        line-height: 1.7;
+        max-width: 500px;
+        margin-bottom: 48px;
+      }
+
+      /* ===== SERVICES ===== */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+      }
+      .service-card {
+        background: white;
+        border: 0.5px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 32px;
+        transition: all 0.3s;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+      .service-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--gold);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s;
+      }
+      .service-card:hover {
+        box-shadow: 0 8px 32px rgba(11, 92, 78, 0.12);
+        transform: translateY(-4px);
+        border-color: var(--green-pale);
+      }
+      .service-card:hover::before {
+        transform: scaleX(1);
+      }
+      .service-icon {
+        width: 52px;
+        height: 52px;
+        background: var(--green-pale);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      .service-card h3 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 22px;
+        color: var(--green-dark);
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+      }
+      .service-card p {
+        font-size: 14px;
+        color: var(--text-muted);
+        line-height: 1.7;
+      }
+      .service-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 20px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--green);
+        text-decoration: none;
+        letter-spacing: 0.5px;
+      }
+      .service-link svg {
+        transition: transform 0.2s;
+      }
+      .service-card:hover .service-link svg {
+        transform: translateX(4px);
+      }
+
+      /* ===== VEHICULES ===== */
+      .vehicles-section {
+        background: var(--gray);
+        padding: 80px 5%;
+      }
+      .vehicles-filter {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+      }
+      .filter-btn {
+        padding: 8px 20px;
+        border-radius: 20px;
+        border: 1.5px solid #ddd;
+        background: white;
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+        color: var(--text-muted);
+      }
+      .filter-btn.active,
+      .filter-btn:hover {
+        background: var(--green);
+        border-color: var(--green);
+        color: white;
+      }
+      .vehicles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+      }
+      .vehicle-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 0.5px solid #e5e5e5;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+      .vehicle-card:hover {
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        transform: translateY(-3px);
+      }
+      .vehicle-img {
+        height: 200px;
+        background: linear-gradient(
+          135deg,
+          var(--green-pale),
+          rgba(11, 92, 78, 0.08)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      /* Pour remplacer le placeholder par une vraie image :*/
+   .vehicle-img img { width:100%; height:100%; object-fit:cover; } 
+      .vehicle-tag {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        padding: 4px 12px;
+        border-radius: 3px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+      .tag-vente {
+        background: var(--gold);
+        color: var(--green-dark);
+      }
+      .tag-location {
+        background: var(--green);
+        color: white;
+      }
+      .vehicle-info {
+        padding: 20px;
+      }
+      .vehicle-info h4 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 19px;
+        color: var(--green-dark);
+        letter-spacing: 1px;
+        margin-bottom: 4px;
+      }
+      .vehicle-meta {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-bottom: 14px;
+      }
+      .vehicle-price {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--green);
+      }
+      .vehicle-price span {
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--text-muted);
+      }
+      .vehicle-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 14px;
+      }
+      .v-btn {
+        flex: 1;
+        padding: 10px;
+        border-radius: 15px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        transition: all 0.2s;
+        letter-spacing: 0.5px;
+      }
+      .v-btn-main {
+        background: var(--green);
+        color: white;
+      }
+      .v-btn-main:hover {
+        background: var(--green-dark);
+      }
+      .v-btn-wa {
+        background: #25d366;
+        color: white;
+      }
+      .v-btn-wa:hover {
+        background: #1eb85e;
+      }
+
+      /* ===== PIECES ===== */
+      .pieces-section {
+        padding: 80px 5%;
+      }
+      .pieces-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+      }
+      .piece-card {
+        background: white;
+        border: 0.5px solid #e5e5e5;
+        border-radius: 10px;
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        transition: all 0.25s;
+        cursor: pointer;
+      }
+      .piece-card:hover {
+        border-color: var(--green);
+        box-shadow: 0 4px 16px rgba(11, 92, 78, 0.08);
+      }
+      .piece-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 8px;
+        overflow: hidden;
+        flex-shrink: 0;
+        background: var(--green-pale);
+      }
+      .piece-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .piece-name {
+        font-weight: 600;
+        font-size: 15px;
+        color: var(--green-dark);
+        margin-bottom: 3px;
+      }
+      .piece-avail {
+        font-size: 12px;
+        color: #2e9b6a;
+        font-weight: 500;
+      }
+
+      /* ===== WHY US ===== */
+      .why-section {
+        background: var(--green-dark);
+        padding: 80px 5%;
+      }
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 32px;
+        margin-top: 48px;
+      }
+      .why-item {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .why-num {
+        font-family: "Montserrat", sans-serif;
+        font-size: 48px;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1;
+      }
+      .why-title {
+        font-weight: 600;
+        font-size: 16px;
+        color: white;
+      }
+      .why-desc {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.55);
+        line-height: 1.7;
+      }
+
+      /* ===== CONTACT ===== */
+      .contact-section {
+        padding: 80px 5%;
+      }
+      .contact-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: start;
+      }
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+      .contact-item {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+      }
+      .contact-icon {
+        width: 42px;
+        height: 42px;
+        background: var(--green-pale);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .contact-item-label {
+        font-size: 11px;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 3px;
+      }
+      .contact-item-val {
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--green-dark);
+      }
+      .contact-form {
+        background: var(--gray);
+        border-radius: 12px;
+        padding: 36px;
+      }
+      .contact-form h3 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 24px;
+        color: var(--green-dark);
+        letter-spacing: 1px;
+        margin-bottom: 24px;
+      }
+      .form-group {
+        margin-bottom: 16px;
+      }
+      .form-group label {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 6px;
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        color: var(--text);
+        background: white;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--green);
+      }
+      .form-group textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .submit-btn {
+        width: 100%;
+        background: var(--green);
+        color: white;
+        padding: 14px;
+        border-radius: 6px;
+        border: none;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.2s;
+        margin-top: 8px;
+        font-family: "Inter", sans-serif;
+      }
+      .submit-btn:hover {
+        background: var(--green-dark);
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        background: var(--green-dark);
+        padding: 48px 5% 24px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .footer-inner {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 48px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .footer-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .footer-name {
+        font-family: "Montserrat", sans-serif;
+        font-size: 20px;
+        color: white;
+        letter-spacing: 2px;
+      }
+      .footer-desc {
+        font-size: 13px;
+        line-height: 1.7;
+      }
+      .footer-col h4 {
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 16px;
+        font-weight: 600;
+      }
+      .footer-col ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .footer-col a {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .footer-col a:hover {
+        color: var(--gold);
+      }
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+        font-size: 12px;
+      }
+
+      /* ===== WHATSAPP FLOTTANT ===== */
+      .wa-float {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        z-index: 999;
+        width: 56px;
+        height: 56px;
+        background: #25d366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+        cursor: pointer;
+        transition: all 0.25s;
+      }
+      .wa-float:hover {
+        transform: scale(1.1);
+        background: #1eb85e;
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 768px) {
+        .hero {
+          flex-direction: column;
+          padding: 100px 5% 60px;
+          text-align: center;
+        }
+        .hero-stats {
+          justify-content: center;
+          margin-top: 40px;
+          margin-bottom: 0;
+          transform: translateY(45px);
+        }
+        .hero-desc {
+          margin-bottom: 0;
+          margin-top: 50px;
+          transform: translateY(10px);
+        }
+        .hero-actions {
+          justify-content: center;
+          margin-bottom: 0;
+          margin-top: 0px;
+          transform: translateY(40px);
+        }
+        .hero h1 {
+          transform: translateY(35px);
+        }
+        .hero-badge {
+          transform: translateY(40px);
+        }
+        .hero-image {
+          display: none;
+        }
+        .contact-inner {
+          grid-template-columns: 1fr;
+        }
+        .footer-inner {
+          grid-template-columns: 1fr;
+        }
+        .nav-links {
+          display: none;
+        }
+        .desktop-cta {
+          display: none;
+        }
+        .burger {
+          display: flex;
+        }
+        .hero-stats {
+          justify-content: center;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .modal-body {
+          flex-direction: column;
+        }
+        .modal-gallery {
+          min-width: unset;
+          width: 100%;
+        }
+        .modal-thumbs {
+          flex-direction: row;
+          overflow-x: auto;
+          overflow-y: visible;
+          max-height: unset;
+        }
+        .modal-thumb {
+          width: 64px;
+          height: 48px;
+          flex-shrink: 0;
+        }
+      }
+
+      /* ===== MODALE DÉTAILS VÉHICULE ===== */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.75);
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .modal-overlay.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .modal-box {
+        background: white;
+        border-radius: 16px;
+        width: 100%;
+        max-width: 860px;
+        max-height: 90vh;
+        overflow-y: auto;
+        transform: translateY(24px) scale(0.97);
+        transition: transform 0.3s ease;
+        position: relative;
+      }
+      .modal-overlay.active .modal-box {
+        transform: translateY(0) scale(1);
+      }
+      .modal-close {
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: flex-end;
+        padding: 16px 16px 0;
+        background: white;
+        z-index: 2;
+      }
+      .modal-close button {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid #e0e0e0;
+        background: white;
+        cursor: pointer;
+        font-size: 18px;
+        color: #666;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+      }
+      .modal-close button:hover {
+        background: #f5f5f5;
+        color: #333;
+      }
+      .modal-body {
+        display: flex;
+        gap: 28px;
+        padding: 0 24px 24px;
+      }
+      /* Galerie */
+      .modal-gallery {
+        display: flex;
+        gap: 10px;
+        min-width: 320px;
+        flex: 1.1;
+      }
+      .modal-thumbs {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        overflow-y: auto;
+        max-height: 360px;
+      }
+      .modal-thumb {
+        width: 72px;
+        height: 58px;
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+        border: 2px solid transparent;
+        flex-shrink: 0;
+        transition: border-color 0.2s;
+      }
+      .modal-thumb.active {
+        border-color: var(--green);
+      }
+      .modal-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .modal-main-img {
+        flex: 1;
+        border-radius: 12px;
+        overflow: hidden;
+        aspect-ratio: 4/3;
+        background: var(--green-pale);
+      }
+      .modal-main-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.25s;
+      }
+      /* Infos */
+      .modal-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .modal-title {
+        font-family: "Montserrat", sans-serif;
+        font-size: 22px;
+        font-weight: 800;
+        color: var(--green-dark);
+      }
+      .modal-tag {
+        display: inline-block;
+        padding: 3px 12px;
+        border-radius: 3px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+      .modal-specs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        border: 1px solid #eeeeee;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .modal-spec {
+        padding: 10px 14px;
+        font-size: 13px;
+        border-bottom: 1px solid #eeeeee;
+      }
+      .modal-spec:nth-last-child(-n + 2) {
+        border-bottom: none;
+      }
+      .modal-spec-label {
+        color: var(--text-muted);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 2px;
+      }
+      .modal-spec-val {
+        font-weight: 600;
+        color: var(--green-dark);
+        font-size: 14px;
+      }
+      .modal-price-block {
+        background: var(--green-pale);
+        border-radius: 10px;
+        padding: 16px;
+      }
+      .modal-price-label {
+        font-size: 11px;
+        color: var(--green);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+      }
+      .modal-price-val {
+        font-family: "Montserrat", sans-serif;
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--green-dark);
+      }
+      .modal-price-note {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-top: 2px;
+      }
+      .modal-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 4px;
+      }
+      .modal-btn-order {
+        background: var(--green);
+        color: white;
+        padding: 13px;
+        border-radius: 8px;
+        border: none;
+        font-family: "Montserrat", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background 0.2s;
+        width: 100%;
+      }
+      .modal-btn-order:hover {
+        background: var(--green-dark);
+      }
+      .modal-btn-wa {
+        background: #25d366;
+        color: white;
+        padding: 13px;
+        border-radius: 8px;
+        border: none;
+        font-family: "Montserrat", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background 0.2s;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .modal-btn-wa:hover {
+        background: #1eb85e;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========== NAVIGATION ========== -->
+    <nav>
+      <div class="nav-inner">
+        <div class="nav-logo">
+          <!-- REMPLACER src par le chemin de votre logo, ex: src="images/logo.png" -->
+          <img
+            class="logo-img"
+            src="media/logo.png"
+            alt="Mokelenko Motors Logo"
+            onerror="this.style.display = 'none'"
+          />
+          <div class="nav-brand">
+            <span class="nav-name">MOKELENKO</span>
+            <span class="nav-sub">Motors</span>
+          </div>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#vehicules">Véhicules</a></li>
+          <li><a href="#pieces">Pièces</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="nav-cta desktop-cta" onclick="scrollTo('contact')">
+          Nous contacter
+        </button>
+        <button
+          class="burger"
+          id="burger"
+          onclick="toggleMenu()"
+          aria-label="Menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="mobile-menu" id="mobile-menu">
+        <a
+          href="#services"
+          onclick="
+            closeMenu();
+            scrollTo('services');
+          "
+          >Services</a
+        >
+        <a
+          href="#vehicules"
+          onclick="
+            closeMenu();
+            scrollTo('vehicules');
+          "
+          >Véhicules</a
+        >
+        <a
+          href="#pieces"
+          onclick="
+            closeMenu();
+            scrollTo('pieces');
+          "
+          >Pièces</a
+        >
+        <a
+          href="#contact"
+          onclick="
+            closeMenu();
+            scrollTo('contact');
+          "
+          >Contact</a
+        >
+        <a
+          href="#contact"
+          onclick="
+            closeMenu();
+            scrollTo('contact');
+          "
+          style="color: var(--gold); font-weight: 600; border-bottom: none"
+          >Nous contacter →</a
+        >
+      </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section id="hero" class="hero">
+      <div class="hero-content">
+        <div class="background"></div>
+       <!-- <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Votre partenaire automobile</span>
+        </div>-->
+        <h1>ROULEZ EN <span>TOUTE</span> CONFIANCE</h1>
+        <p class="hero-desc">
+          Achat, vente de véhicules et pièces de rechange de qualité. Mokelenko
+          Motors vous accompagne à chaque étape de votre projet automobile.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="scrollTo('vehicules')">
+            Voir les véhicules
+          </button>
+          <button class="btn-outline" onclick="scrollTo('contact')">
+            Demander un devis
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-num">50+</div>
+            <div class="stat-label">Véhicules</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">100+</div>
+            <div class="stat-label">Pièces stock</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">24h</div>
+            <div class="stat-label">Réponse</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-car-wrap">
+          <div class="hero-car-shape">
+            <img
+              src="Media/MMV.png"
+              alt="Véhicule vedette"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+            <div class="car-placeholder">
+             
+                <path
+                  d="M30 55 L50 30 Q55 22 65 22 L135 22 Q145 22 150 30 L170 55 L180 55 Q185 55 185 60 L185 65 Q185 70 180 70 L20 70 Q15 70 15 65 L15 60 Q15 55 20 55 Z"
+                  fill="rgba(255,255,255,0.15)"
+                  stroke="rgba(255,255,255,0.5)"
+                  stroke-width="1.5"
+                />
+                <ellipse
+                  cx="55"
+                  cy="70"
+                  rx="13"
+                  ry="13"
+                  fill="rgba(255,255,255,0.2)"
+                  stroke="rgba(255,255,255,0.5)"
+                  stroke-width="1.5"
+                />
+                <ellipse
+                  cx="145"
+                  cy="70"
+                  rx="13"
+                  ry="13"
+                  fill="rgba(255,255,255,0.2)"
+                  stroke="rgba(255,255,255,0.5)"
+                  stroke-width="1.5"
+                />
+                <ellipse
+                  cx="55"
+                  cy="70"
+                  rx="5"
+                  ry="5"
+                  fill="rgba(255,255,255,0.4)"
+                />
+                <ellipse
+                  cx="145"
+                  cy="70"
+                  rx="5"
+                  ry="5"
+                  fill="rgba(255,255,255,0.4)"
+                />
+              </svg>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SERVICES ========== -->
+    <section id="services" class="section">
+      <div class="section-label">Ce que nous offrons</div>
+      <div class="section-title">NOS SERVICES</div>
+      <p class="section-sub">
+        Tout ce dont vous avez besoin pour votre véhicule, au meilleur rapport
+        qualité-prix.
+      </p>
+      <div class="services-grid">
+        <!-- Service 1 : Vente -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M3 9l1-1h16l1 1v2H3V9z"
+                stroke="#0B5C4E"
+                stroke-width="1.5"
+                fill="rgba(11,92,78,0.1)"
+              />
+              <path
+                d="M5 11v5a1 1 0 001 1h12a1 1 0 001-1v-5"
+                stroke="#0B5C4E"
+                stroke-width="1.5"
+              />
+              <circle
+                cx="8"
+                cy="17"
+                r="2"
+                stroke="#0B5C4E"
+                stroke-width="1.5"
+              />
+              <circle
+                cx="16"
+                cy="17"
+                r="2"
+                stroke="#0B5C4E"
+                stroke-width="1.5"
+              />
+            </svg>
+          </div>
+          <h3>Vente de Véhicules</h3>
+          <p>
+            Large sélection de véhicules toutes marques. Trouvez la voiture qui
+            correspond à vos besoins et à votre budget.
+          </p>
+          <a
+            class="service-link"
+            href="#vehicules"
+            onclick="
+              event.preventDefault();
+              scrollTo('vehicules');
+            "
+          >
+            Explorer le catalogue
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                stroke="#0B5C4E"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Service 2 : Location -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect
+                x="3"
+                y="6"
+                width="18"
+                height="12"
+                rx="2"
+                stroke="#0B5C4E"
+                stroke-width="1.5"
+                fill="rgba(11,92,78,0.1)"
+              />
+              <path
+                d="M7 10h3M7 14h5"
+                stroke="#0B5C4E"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+              <circle
+                cx="17"
+                cy="12"
+                r="2"
+                stroke="#0B5C4E"
+                stroke-width="1.5"
+              />
+            </svg>
+          </div>
+          <h3>Location de Véhicules</h3>
+          <p>
+            Des véhicules disponibles à la location pour courte ou longue durée.
+            Flexibilité et tarifs adaptés à tous les budgets.
+          </p>
+          <a
+            class="service-link"
+            href="#contact"
+            onclick="
+              event.preventDefault();
+              scrollTo('contact');
+            "
+          >
+            Réserver maintenant
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                stroke="#0B5C4E"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Service 3 : Pièces -->
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle
+                cx="12"
+                cy="12"
+                r="4"
+                stroke="#0B5C4E"
+                stroke-width="1.5"
+                fill="rgba(11,92,78,0.1)"
+              />
+              <path
+                d="M12 2v2M12 20v2M2 12h2M20 12h2"
+                stroke="#0B5C4E"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+              <path
+                d="M5.6 5.6l1.4 1.4M16.9 16.9l1.4 1.4M5.6 18.4l1.4-1.4M16.9 7.1l1.4-1.4"
+                stroke="#0B5C4E"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <h3>Pièces de Rechange</h3>
+          <p>
+            Pièces d'origine et compatibles pour toutes marques. Stock
+            disponible immédiatement ou commande rapide.
+          </p>
+          <a
+            class="service-link"
+            href="#pieces"
+            onclick="
+              event.preventDefault();
+              scrollTo('pieces');
+            "
+          >
+            Voir les pièces
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                stroke="#0B5C4E"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VEHICULES ========== -->
+    <section id="vehicules" class="vehicles-section">
+      <div class="section-label">Notre sélection</div>
+      <div class="section-title">VÉHICULES DISPONIBLES</div>
+      <div class="vehicles-filter">
+        <button
+          class="filter-btn active"
+          onclick="filterVehicles('tous', this)"
+        >
+          Tous
+        </button>
+        <button class="filter-btn" onclick="filterVehicles('vente', this)">
+          À vendre
+        </button>
+        <button class="filter-btn" onclick="filterVehicles('location', this)">
+          À louer
+        </button>
+      </div>
+      <div class="vehicles-grid" id="vehicles-grid">
+        <div class="vehicle-card" data-type="vente">
+          <div class="vehicle-img">
+            <span class="vehicle-tag tag-vente">Vente</span>
+            <!-- Remplacer src par votre photo : src="images/toyota-rav4-2021.jpg" -->
+            <img src="Media/rav5.jpg" alt="Toyota RAV4 2021" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="vehicle-info">
+            <h4>Toyota RAV4 2021</h4>
+            <div class="vehicle-meta">
+              SUV · Automatique · Essence · 45 000 km
+            </div>
+            <div class="vehicle-price">
+              28 500 000 GNF <span>/ négociable</span>
+            </div>
+            <div class="vehicle-actions">
+              <button
+                class="v-btn v-btn-main"
+                onclick="
+                  openModal({
+                    titre: 'Toyota RAV4 2021',
+                    type: 'vente',
+                    marque: 'Toyota',
+                    modele: 'RAV4',
+                    annee: '2021',
+                    km: '45 000 km',
+                    carburant: 'Essence',
+                    boite: 'Automatique',
+                    prix: '28 500 000 GNF',
+                    note: 'Négociable',
+                    localisation: 'Conakry',
+                    photos: [
+                      'Media/rav4 2.jpg',
+                      'Media/rav4 3.jpg',
+                      'Media/rav4 4.jpg',
+                    ],
+                  })
+                "
+              >
+                Détails
+              </button>
+             <!--  <button
+                class="v-btn v-btn-wa"
+                onclick="openWhatsApp('Toyota RAV4 2021')"
+              >
+                WhatsApp
+              </button>-->
+            </div>
+          </div>
+        </div>
+
+        <div class="vehicle-card" data-type="vente">
+          <div class="vehicle-img">
+            <span class="vehicle-tag tag-vente">Vente</span>
+            <!-- Remplacer src par votre photo : src="images/mercedes-c200-2019.jpg" -->
+            <img src="Media/rav5.jpg" alt="Mercedes C200 2019" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="vehicle-info">
+            <h4>Mercedes C200 2019</h4>
+            <div class="vehicle-meta">
+              Berline · Automatique · Diesel · 78 000 km
+            </div>
+            <div class="vehicle-price">
+              32 000 000 GNF <span>/ négociable</span>
+            </div>
+            <div class="vehicle-actions">
+              <button
+                class="v-btn v-btn-main"
+                onclick="
+                  openModal({
+                    titre: 'Mercedes C200 2019',
+                    type: 'vente',
+                    marque: 'Mercedes-Benz',
+                    modele: 'C200',
+                    annee: '2019',
+                    km: '78 000 km',
+                    carburant: 'Diesel',
+                    boite: 'Automatique',
+                    prix: '32 000 000 GNF',
+                    note: 'Négociable',
+                    localisation: 'Conakry',
+                    photos: [
+                      'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&auto=format',
+                      'https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=800&auto=format',
+                      'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&auto=format',
+                    ],
+                  })
+                "
+              >
+                Détails
+              </button>
+             <!--  <button
+                class="v-btn v-btn-wa"
+                onclick="openWhatsApp('Mercedes C200 2019')"
+              >
+                WhatsApp
+              </button> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="vehicle-card" data-type="location">
+          <div class="vehicle-img">
+            <span class="vehicle-tag tag-location">Location</span>
+            <!-- Remplacer src par votre photo : src="images/toyota-hilux-2022.jpg" -->
+            <img src="Media/rav5.jpg" alt="Toyota Hilux 2022" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="vehicle-info">
+            <h4>Toyota Hilux 2022</h4>
+            <div class="vehicle-meta">Pick-up · Manuelle · Diesel · 4x4</div>
+            <div class="vehicle-price">150 000 GNF <span>/ jour</span></div>
+            <div class="vehicle-actions">
+              <button
+                class="v-btn v-btn-main"
+                onclick="
+                  openModal({
+                    titre: 'Toyota Hilux 2022',
+                    type: 'location',
+                    marque: 'Toyota',
+                    modele: 'Hilux',
+                    annee: '2022',
+                    km: '32 000 km',
+                    carburant: 'Diesel',
+                    boite: 'Manuelle',
+                    prix: '150 000 GNF',
+                    note: 'Par jour',
+                    localisation: 'Conakry',
+                    photos: [
+                      'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&auto=format',
+                      'https://images.unsplash.com/photo-1581540222194-0def2dda95b8?w=800&auto=format',
+                      'https://images.unsplash.com/photo-1504215680853-026ed2a45def?w=800&auto=format',
+                    ],
+                  })
+                "
+              >
+                Réserver
+              </button>
+              <!--<button
+                class="v-btn v-btn-wa"
+                onclick="openWhatsApp('Toyota Hilux 2022 location')"
+              >
+                WhatsApp
+              </button> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="vehicle-card" data-type="vente">
+          <div class="vehicle-img">
+            <span class="vehicle-tag tag-vente">Vente</span>
+            <!-- Remplacer src par votre photo : src="images/hyundai-tucson-2020.jpg" -->
+            <img src="Media/rav5.jpg" alt="Hyundai Tucson 2020" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="vehicle-info">
+            <h4>Hyundai Tucson 2020</h4>
+            <div class="vehicle-meta">
+              SUV · Automatique · Essence · 62 000 km
+            </div>
+            <div class="vehicle-price">
+              22 000 000 GNF <span>/ négociable</span>
+            </div>
+            <div class="vehicle-actions">
+              <button
+                class="v-btn v-btn-main"
+                onclick="
+                  openModal({
+                    titre: 'Hyundai Tucson 2020',
+                    type: 'vente',
+                    marque: 'Hyundai',
+                    modele: 'Tucson',
+                    annee: '2020',
+                    km: '62 000 km',
+                    carburant: 'Essence',
+                    boite: 'Automatique',
+                    prix: '22 000 000 GNF',
+                    note: 'Négociable',
+                    localisation: 'Conakry',
+                    photos: [
+                      'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800&auto=format',
+                      'https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=800&auto=format',
+                      'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=800&auto=format',
+                    ],
+                  })
+                "
+              >
+                Détails
+              </button>
+              <!-- <button
+                class="v-btn v-btn-wa"
+                onclick="openWhatsApp('Hyundai Tucson 2020')"
+              >
+                WhatsApp
+              </button> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="vehicle-card" data-type="location">
+          <div class="vehicle-img">
+            <span class="vehicle-tag tag-location">Location</span>
+            <!-- Remplacer src par votre photo : src="images/honda-crv-2021.jpg" -->
+            <img src="Media/rav5.jpg" alt="Honda CR-V 2021" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="vehicle-info">
+            <h4>Honda CR-V 2021</h4>
+            <div class="vehicle-meta">
+              SUV · Automatique · Essence · Climatisé
+            </div>
+            <div class="vehicle-price">120 000 GNF <span>/ jour</span></div>
+            <div class="vehicle-actions">
+              <button
+                class="v-btn v-btn-main"
+                onclick="
+                  openModal({
+                    titre: 'Honda CR-V 2021',
+                    type: 'location',
+                    marque: 'Honda',
+                    modele: 'CR-V',
+                    annee: '2021',
+                    km: '28 000 km',
+                    carburant: 'Essence',
+                    boite: 'Automatique',
+                    prix: '120 000 GNF',
+                    note: 'Par jour · Climatisé',
+                    localisation: 'Conakry',
+                    photos: [
+                      'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&auto=format',
+                      'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&auto=format',
+                      'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&auto=format',
+                    ],
+                  })
+                "
+              >
+                Réserver
+              </button>
+              <!-- <button
+                class="v-btn v-btn-wa"
+                onclick="openWhatsApp('Honda CR-V 2021 location')"
+              >
+                WhatsApp
+              </button> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="vehicle-card" data-type="vente">
+          <div class="vehicle-img">
+            <span class="vehicle-tag tag-vente">Vente</span>
+            <!-- Remplacer src par votre photo : src="images/nissan-xtrail-2018.jpg" -->
+            <img src="Media/rav5.jpg" alt="Nissan X-Trail 2018" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="vehicle-info">
+            <h4>Nissan X-Trail 2018</h4>
+            <div class="vehicle-meta">SUV · Manuelle · Diesel · 95 000 km</div>
+            <div class="vehicle-price">
+              18 500 000 GNF <span>/ négociable</span>
+            </div>
+            <div class="vehicle-actions">
+              <button
+                class="v-btn v-btn-main"
+                onclick="
+                  openModal({
+                    titre: 'Nissan X-Trail 2018',
+                    type: 'vente',
+                    marque: 'Nissan',
+                    modele: 'X-Trail',
+                    annee: '2018',
+                    km: '95 000 km',
+                    carburant: 'Diesel',
+                    boite: 'Manuelle',
+                    prix: '18 500 000 GNF',
+                    note: 'Négociable',
+                    localisation: 'Conakry',
+                    photos: [
+                      'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&auto=format',
+                      'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&auto=format',
+                      'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&auto=format',
+                    ],
+                  })
+                "
+              >
+                Détails
+              </button>
+              <!-- <button
+                class="v-btn v-btn-wa"
+                onclick="openWhatsApp('Nissan X-Trail 2018')"
+              >
+                WhatsApp
+              </button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PIÈCES DE RECHANGE ========== -->
+    <section id="pieces" class="pieces-section">
+      <div class="section-label">Pièces auto</div>
+      <div class="section-title">PIÈCES DE RECHANGE</div>
+      <p class="section-sub">
+        Nous proposons des pièces de rechange pour toutes marques. Qualité
+        garantie, disponibilité immédiate ou sur commande.
+      </p>
+      <div class="pieces-grid">
+        <div class="piece-card">
+          <div class="piece-icon">
+            <img
+              src="Media/pneu.jpg"
+              alt="Jantes et Pneus"
+            />
+          </div>
+          <div>
+            <div class="piece-name">Jantes &amp; Pneus</div>
+            <div class="piece-avail" style="color: #e8a020">● Sur commande</div>
+          </div>
+        </div>
+        <div class="piece-card">
+          <div class="piece-icon">
+            <img
+              src="Media/batterie.jpg"
+              alt="Batterie auto"
+            />
+          </div>
+          <div>
+            <div class="piece-name">Batterie auto</div>
+            <div class="piece-avail" style="color: #e8a020">● Sur commande</div>
+          </div>
+        </div>
+        <div class="piece-card">
+          <div class="piece-icon">
+            <img
+              src="Media/filtre air.jpg"
+              alt="Filtres"
+            />
+          </div>
+          <div>
+            <div class="piece-name">Filtres (air/huile)</div>
+            <div class="piece-avail" style="color: #e8a020">● Sur commande</div>
+          </div>
+        </div>
+        <div class="piece-card">
+          <div class="piece-icon">
+            <img
+              src="Media/frein.jpg"
+              alt="Plaquettes de frein"
+            />
+          </div>
+          <div>
+            <div class="piece-name">Plaquettes de frein</div>
+            <div class="piece-avail" style="color: #e8a020">● Sur commande</div>
+          </div>
+        </div>
+        <div class="piece-card">
+          <div class="piece-icon">
+            <img
+              src="Media/amortisseur.jpg"
+              alt="Amortisseurs"
+            />
+          </div>
+          <div>
+            <div class="piece-name">Amortisseurs</div>
+            <div class="piece-avail" style="color: #e8a020">● Sur commande</div>
+          </div>
+        </div>
+        <div class="piece-card">
+          <div class="piece-icon">
+            <img
+              src="Media/phares.jpg"
+              alt="Phares et Feux"
+            />
+          </div>
+          <div>
+            <div class="piece-name">Phares &amp; Feux</div>
+            <div class="piece-avail" style="color: #e8a020">● Sur commande</div>
+          </div>
+        </div>
+        <div class="piece-card">
+          <div class="piece-icon">
+            <img
+              src="Media/radiateur.jpg"
+              alt="Radiateurs"
+            />
+          </div>
+          <div>
+            <div class="piece-name">Radiateurs</div>
+            <div class="piece-avail" style="color: #e8a020">● Sur commande</div>
+          </div>
+        </div>
+        <div class="piece-card">
+          <div class="piece-icon">
+            <img
+              src="Media/moteur.jpg"
+              alt="Pièces moteur"
+            />
+          </div>
+          <div>
+            <div class="piece-name">Pièces moteur</div>
+            <div class="piece-avail" style="color: #e8a020">● Sur commande</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 40px; text-align: center">
+        <button
+          class="btn-primary"
+          style="background: var(--green); color: white"
+          onclick="openWhatsApp('pièce de rechange')"
+        >
+          Demander une pièce via WhatsApp
+        </button>
+      </div>
+    </section>
+
+    <!-- ========== POURQUOI NOUS ========== -->
+    <section class="why-section">
+      <div style="text-align: center">
+        <div class="section-label" style="color: var(--gold)">
+          Pourquoi nous choisir
+        </div>
+        <div class="section-title" style="color: white">NOS ENGAGEMENTS</div>
+      </div>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="why-num">01</div>
+          <div class="why-title">Véhicules vérifiés</div>
+          <div class="why-desc">
+            Chaque véhicule est soigneusement inspecté avant la mise en vente ou
+            en location.
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">02</div>
+          <div class="why-title">Prix transparents</div>
+          <div class="why-desc">
+            Pas de frais cachés. Nos tarifs sont clairs et négociables selon
+            votre budget.
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">03</div>
+          <div class="why-title">Réponse rapide</div>
+          <div class="why-desc">
+            Nous répondons sous 24h à toutes vos demandes, 7j/7 via WhatsApp ou
+            email.
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">04</div>
+          <div class="why-title">Service de confiance</div>
+          <div class="why-desc">
+            Satisfaction client garantie. Votre confiance est notre priorité
+            absolue.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section id="contact" class="contact-section">
+      <div style="margin-bottom: 48px">
+        <div class="section-label">Parlons-en</div>
+        <div class="section-title">CONTACTEZ-NOUS</div>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  stroke="#0B5C4E"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Téléphone / WhatsApp</div>
+              <div class="contact-item-val">+224 627 49 68 28</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  stroke="#0B5C4E"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-val">
+                <a href="#" class="__cf_email__" data-cfemail="204d4f5553544150484143484552494648414944415241141660474d41494c0e434f4d" style="text-decoration: none;">moustaphacherifhaidara46@gmail.com</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="#0B5C4E"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M12 6v6l4 2"
+                  stroke="#0B5C4E"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Disponibilité</div>
+              <div class="contact-item-val">24H / 24</div>
+            </div>
+          </div>
+          <div style="margin-top: 8px">
+            <div class="section-label">Pays ciblé</div>
+            <div
+              style="font-size: 14px; color: var(--text-muted); margin-top: 8px"
+            >
+              🇫🇷 France &nbsp;·&nbsp; 🇩🇪 Allemagne &nbsp;·&nbsp; 🇨🇦 Angleterre
+              canada &nbsp;·&nbsp; 🇺🇸 USA
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3>ENVOYER UN MESSAGE</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Prénom</label
+              ><input type="text" placeholder="Votre prénom" />
+            </div>
+            <div class="form-group">
+              <label>Nom</label><input type="text" placeholder="Votre nom" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Téléphone</label><input type="tel" placeholder="+224 ..." />
+          </div>
+          <div class="form-group">
+            <label>Service souhaité</label>
+            <select>
+              <option value="">Choisir un service...</option>
+              <option>Achat de véhicule</option>
+              <option>Location de véhicule</option>
+              <option>Pièces de rechange</option>
+              <option>Autre demande</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label
+            ><textarea placeholder="Décrivez votre besoin..."></textarea>
+          </div>
+          <button class="submit-btn" onclick="handleFormSubmit(this)">
+            Envoyer la demande
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img
+              class="logo-img"
+              src="Media/logo.png"
+              alt="Mokelenko Motors Logo"
+              style="width: 36px; height: 36px; object-fit: contain"
+              onerror="this.style.display = 'none'"
+            />
+            <span class="footer-name">MOKELENKO MOTORS</span>
+          </div>
+          <p class="footer-desc">
+            Votre partenaire de confiance dans le domaine automobile. Vente,
+            location et pièces de rechange pour tous vos besoins.
+          </p>
+          <p style="font-size: 12px; color: rgba(255, 255, 255, 0.35)">
+            +224 627 49 68 28 · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8be6e4fef8ffeafbe3eae8e3eef9e2ede3eae2efeaf9eabfbdcbece6eae2e7a5e8e4e6">[email&#160;protected]</a>
+          </p>
+        </div>
+        <div class="footer-col">
+            <li><a href="#vehicules">Véhicules à vendre</a></li>
+            <li><a href="#vehicules">Location</a></li>
+            <li><a href="#pieces">Pièces de rechange</a></li>
+            <li><a href="#contact">Demander un devis</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Informations</h4>
+          <ul>
+            <li><a href="#">À propos</a></li>
+            <li><a href="#">Conditions de vente</a></li>
+            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="#contact">Nous contacter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Mokelenko Motors. Tous droits réservés.</span>
+        <span>🇫🇷 🇩🇪 🇨🇦 🇺🇸</span>
+      </div>
+    </footer>
+
+    <!-- ========== MODALE DÉTAILS VÉHICULE ========== -->
+    <div
+      class="modal-overlay"
+      id="vehicleModal"
+      onclick="handleModalClick(event)"
+    >
+      <div class="modal-box">
+        <div class="modal-close">
+          <button onclick="closeModal()" title="Fermer">✕</button>
+        </div>
+        <div class="modal-body">
+          <!-- Galerie photos -->
+          <div class="modal-gallery">
+            <div class="modal-thumbs" id="modalThumbs"></div>
+            <div class="modal-main-img">
+              <img id="modalMainImg" src="" alt="Photo véhicule" />
+            </div>
+          </div>
+          <!-- Informations -->
+          <div class="modal-info">
+            <div>
+              <span class="modal-tag" id="modalTag"></span>
+              <div class="modal-title" id="modalTitle"></div>
+            </div>
+            <div class="modal-specs" id="modalSpecs"></div>
+            <div class="modal-price-block">
+              <div class="modal-price-label">Prix</div>
+              <div class="modal-price-val" id="modalPrice"></div>
+              <div class="modal-price-note" id="modalPriceNote"></div>
+            </div>
+            <div class="modal-actions">
+              <button class="modal-btn-order" id="modalOrderBtn">
+                Commander ce véhicule
+              </button>
+              <button class="modal-btn-wa" id="modalWaBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+                  />
+                  <path
+                    d="M12.05 2.05C6.495 2.05 1.977 6.568 1.977 12.122c0 1.924.527 3.722 1.443 5.268L2 22l4.73-1.397a10.07 10.07 0 004.82 1.22c5.555 0 10.072-4.518 10.072-10.073 0-5.553-4.517-10.07-10.072-10.07zm0 18.4a8.326 8.326 0 01-4.27-1.174l-.307-.184-3.15.933.888-3.077-.2-.32a8.312 8.312 0 01-1.241-4.403c0-4.567 3.714-8.28 8.28-8.28 4.565 0 8.277 3.713 8.277 8.28 0 4.567-3.712 8.28-8.277 8.28v-.055z"
+                  />
+                </svg>
+                Contacter sur WhatsApp
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== BOUTON WHATSAPP FLOTTANT ========== -->
+    <div
+      class="wa-float"
+      onclick="openWhatsApp('')"
+      title="Nous contacter sur WhatsApp"
+    >
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"
+        />
+        <path
+          d="M12.05 2.05C6.495 2.05 1.977 6.568 1.977 12.122c0 1.924.527 3.722 1.443 5.268L2 22l4.73-1.397a10.07 10.07 0 004.82 1.22c5.555 0 10.072-4.518 10.072-10.073 0-5.553-4.517-10.07-10.072-10.07zm0 18.4a8.326 8.326 0 01-4.27-1.174l-.307-.184-3.15.933.888-3.077-.2-.32a8.312 8.312 0 01-1.241-4.403c0-4.567 3.714-8.28 8.28-8.28 4.565 0 8.277 3.713 8.277 8.28 0 4.567-3.712 8.28-8.277 8.28v-.055z"
+        />
+      </svg>
+    </div>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+      /* ===== MODALE VÉHICULE ===== */
+      function openModal(v) {
+        const overlay = document.getElementById("vehicleModal");
+        // Tag
+        const tag = document.getElementById("modalTag");
+        tag.textContent = v.type === "vente" ? "Vente" : "Location";
+        tag.style.background = v.type === "vente" ? "#C9A84C" : "#0B5C4E";
+        tag.style.color = v.type === "vente" ? "#083D34" : "white";
+        // Titre
+        document.getElementById("modalTitle").textContent = v.titre;
+        // Specs
+        const specs = [
+          { label: "Marque", val: v.marque },
+          { label: "Modèle", val: v.modele },
+          { label: "Année", val: v.annee },
+          { label: "Kilométrage", val: v.km },
+          { label: "Carburant", val: v.carburant },
+          { label: "Boîte", val: v.boite },
+          { label: "Localisation", val: v.localisation },
+        ];
+        document.getElementById("modalSpecs").innerHTML = specs
+          .map(
+            (s) =>
+              `<div class="modal-spec"><div class="modal-spec-label">${s.label}</div><div class="modal-spec-val">${s.val}</div></div>`,
+          )
+          .join("");
+        // Prix
+        document.getElementById("modalPrice").textContent = v.prix;
+        document.getElementById("modalPriceNote").textContent = v.note || "";
+        // Galerie
+        const thumbsEl = document.getElementById("modalThumbs");
+        thumbsEl.innerHTML = v.photos
+          .map(
+            (p, i) =>
+              `<div class="modal-thumb ${i === 0 ? "active" : ""}" onclick="switchPhoto('${p}', this)">
+        <img src="${p}&w=160" alt="Photo ${i + 1}">
+      </div>`,
+          )
+          .join("");
+        const mainImg = document.getElementById("modalMainImg");
+        mainImg.src = v.photos[0];
+        // Boutons
+        document.getElementById("modalOrderBtn").onclick = () => {
+          closeModal();
+          openWhatsApp("Commander : " + v.titre);
+        };
+        document.getElementById("modalWaBtn").onclick = () =>
+          openWhatsApp(v.titre);
+        // Ouvrir
+        document.body.style.overflow = "hidden";
+        overlay.classList.add("active");
+      }
+
+      function closeModal() {
+        document.getElementById("vehicleModal").classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      function handleModalClick(e) {
+        if (e.target === document.getElementById("vehicleModal")) closeModal();
+      }
+
+      function switchPhoto(src, thumb) {
+        const mainImg = document.getElementById("modalMainImg");
+        mainImg.style.opacity = "0";
+        setTimeout(() => {
+          mainImg.src = src;
+          mainImg.style.opacity = "1";
+        }, 200);
+        document
+          .querySelectorAll(".modal-thumb")
+          .forEach((t) => t.classList.remove("active"));
+        thumb.classList.add("active");
+      }
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+      });
+
+      /* Burger menu mobile */
+      function toggleMenu() {
+        document.getElementById("burger").classList.toggle("open");
+        document.getElementById("mobile-menu").classList.toggle("open");
+      }
+
+      function closeMenu() {
+        document.getElementById("burger").classList.remove("open");
+        document.getElementById("mobile-menu").classList.remove("open");
+      }
+
+      /* Navigation fluide */
+      function scrollTo(id) {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const id = a.getAttribute("href").slice(1);
+          const el = document.getElementById(id);
+          if (el) {
+            e.preventDefault();
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
+      /* Filtre véhicules */
+      function filterVehicles(type, btn) {
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        document.querySelectorAll(".vehicle-card").forEach((card) => {
+          card.style.display =
+            type === "tous" || card.dataset.type === type ? "" : "none";
+        });
+      }
+
+      /* Lien WhatsApp avec message pré-rempli */
+function openWhatsApp(item) {
+  const phone = "22462749682";
+  const msg = item
+    ? "Bonjour Mokelenko Motors, je suis intéressé(e) par : " + item
+    : "Bonjour Mokelenko Motors, j'ai besoin d'informations.";
+  window.open(
+    "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg),
+    "_blank",
+  );
+}
+    </script>
+  </body>
+</html>
